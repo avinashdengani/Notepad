@@ -7,6 +7,7 @@ public class NMenuBar extends MenuBar{
     Menu file;
     Menu edit;
     MenuItem new1;
+    MenuItem newWindow;
     MenuItem open;
     MenuItem save;
     MenuItem cut;
@@ -19,6 +20,7 @@ public class NMenuBar extends MenuBar{
 
         //MenuItems for "file" Menu
         new1 = new MenuItem("New");
+        newWindow = new MenuItem("New Window");
         open = new MenuItem("Open");
         save = new MenuItem("Save");
 

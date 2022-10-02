@@ -1,14 +1,9 @@
 public class Notepad {
-    
-    public static void main(String[] args) {
-        
-        //Frame
-        NFrame frame = new NFrame("Notepad");
+    NFrame frame;
 
-        //textArea
-        // textArea = new NTextArea("", 50, 50, NTextArea.SCROLLBARS_VERTICAL_ONLY);
-
-        //Set frame visible true at the end
+    public Notepad() {
+        this.frame = new NFrame("Notepad");
         frame.setVisible(true);
     }
+
 }

@@ -23,7 +23,8 @@ public class NWindowClosing extends WindowAdapter{
         yes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                System.exit(0);
+                // System.exit(0);
+                frame.dispose();
             }
         });
 
