@@ -13,7 +13,7 @@ public class PlaceHolderFocusEvent implements FocusListener{
 
     public void focusGained(FocusEvent fe) {
         this.phtf.setForeground(Color.RED);
-        if(this.phtf.getText().equals(this.phtf.placeHolderText)) {
+        if(this.phtf.getText().equals(this.phtf.placeHolderText) && !phtf.isText) {
             this.phtf.setText("");
         }
     }
