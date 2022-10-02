@@ -11,7 +11,7 @@ public class NFrame extends Frame{
 
         addWindowListener(new NWindowClosing(this));
 
-        menuBar = new NMenuBar();
+        menuBar = new NMenuBar(this);
         setMenuBar(menuBar);
         
         textArea = new NTextArea("", 50, 50, NTextArea.SCROLLBARS_VERTICAL_ONLY);

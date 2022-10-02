@@ -3,7 +3,7 @@ public class Notepad {
 
     public Notepad() {
         this.frame = new NFrame("Notepad");
-        frame.setVisible(true);
+        this.frame.setVisible(true);
     }
 
 }

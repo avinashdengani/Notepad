@@ -1,49 +1,49 @@
 import java.awt.MenuBar;
-import java.awt.Menu;
-import java.awt.MenuItem;
-import java.awt.Font;
 
 public class NMenuBar extends MenuBar{
-    Menu file;
-    Menu edit;
-    MenuItem new1;
-    MenuItem newWindow;
-    MenuItem open;
-    MenuItem save;
-    MenuItem cut;
-    MenuItem copy;
-    MenuItem findAndReplace;
+    NFrame frame;
 
-    NMenuBar() {
-        file = new Menu("File");
-        edit = new Menu("Edit");
+    NMenu fileMenu;
+    NMenu editMenu;
+
+    NMenuItem newMenuItem;
+    NMenuItem newWindowMenuItem;
+    NMenuItem openMenuItem;
+    NMenuItem saveMenuItem;
+    NMenuItem cutMenuItem;
+    NMenuItem copyMenuItem;
+    NMenuItem findAndReplaceMenuItem;
+
+    NMenuBar(NFrame frame) {
+        this.frame = frame;
+        fileMenu = new NMenu("File");
+        editMenu = new NMenu("Edit");
 
         //MenuItems for "file" Menu
-        new1 = new MenuItem("New");
-        newWindow = new MenuItem("New Window");
-        open = new MenuItem("Open");
-        save = new MenuItem("Save");
+        newMenuItem = new NMenuItem("New", frame);
+        newWindowMenuItem = new NMenuItem("New Window", frame);
+        openMenuItem = new NMenuItem("Open", frame);
+        saveMenuItem = new NMenuItem("Save", frame);
 
         //MenuItems for "edit" Menu
-        cut = new MenuItem("Cut");
-        copy = new MenuItem("Copy");
-        findAndReplace = new MenuItem("Find and Replace");
+        cutMenuItem = new NMenuItem("Cut", frame);
+        copyMenuItem = new NMenuItem("Copy", frame);
+        findAndReplaceMenuItem = new NMenuItem("Find and Replace", frame);
 
         //Adding MenuItem to Menu 
-        file.add(new1);
-        file.addSeparator();
-        file.add(open);
-        file.add(save);
+        fileMenu.add(newMenuItem);
+        fileMenu.add(newWindowMenuItem);
+        fileMenu.addSeparator();
+        fileMenu.add(openMenuItem);
+        fileMenu.add(saveMenuItem);
 
-        edit.add(cut);
-        edit.add(copy);
-        edit.addSeparator();
-        edit.add(findAndReplace);
+        editMenu.add(cutMenuItem);
+        editMenu.add(copyMenuItem);
+        editMenu.addSeparator();
+        editMenu.add(findAndReplaceMenuItem);
         
         //Adding Menu to MenuBar
-        add(file);
-        add(edit);
-        
-        setFont(new Font("Times New Roman", Font.PLAIN, 15));
+        add(fileMenu);
+        add(editMenu);
     }
 }
