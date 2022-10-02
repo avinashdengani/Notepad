@@ -2,6 +2,7 @@ import java.awt.Dialog;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 public class NDialog extends Dialog{
     
@@ -17,6 +18,8 @@ public class NDialog extends Dialog{
         setSize(400, 200);
         setLayout(new FlowLayout());
         setLocationRelativeTo(null);
+        
+        setFont(new Font("Times New Roman", Font.PLAIN, 25));
 
         addWindowListener(new WindowAdapter() {
            @Override

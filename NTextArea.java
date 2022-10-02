@@ -6,7 +6,7 @@ public class NTextArea extends TextArea{
         setFont(new Font("Times New Roman", Font.PLAIN, 25));
     }
     NTextArea() {
-        super();
+        
     }
     NTextArea(int rows, int columns) {
         super(rows, columns);
