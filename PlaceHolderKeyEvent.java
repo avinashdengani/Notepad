@@ -10,8 +10,9 @@ public class PlaceHolderKeyEvent extends KeyAdapter{
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        if(phtf.getText().equals(phtf.placeHolderText)) {
-            phtf.isText = true;
+        this.phtf.miae.setFindIndex(0);
+        if(this.phtf.getText().equals(phtf.placeHolderText)) {
+            this.phtf.isText = true;
         } else {
             phtf.isText = false;
         }

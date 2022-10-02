@@ -15,6 +15,7 @@ public class NFrame extends Frame{
         setMenuBar(menuBar);
         
         textArea = new NTextArea("", 50, 50, NTextArea.SCROLLBARS_VERTICAL_ONLY);
+        textArea.requestFocus();
         add(textArea);
     }
 }
