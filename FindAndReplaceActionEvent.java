@@ -4,43 +4,44 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class FindAndReplaceActionEvent implements ActionListener{
-    MenuItemActionEvent miae;
+    NEditMenuActionEvent editMenuEventObj;
     NFrame frame;
 
-    FindAndReplaceActionEvent(MenuItemActionEvent miae) {
-        this.miae = miae;
-        this.frame = miae.frame;
+    FindAndReplaceActionEvent(NEditMenuActionEvent editMenuEventObj) {
+        this.editMenuEventObj = editMenuEventObj;
+        this.frame = editMenuEventObj.frame;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        String findText = this.miae.findTf.getPlaceHolderTextFieldText();
-        String replaceText = this.miae.replaceTf.getPlaceHolderTextFieldText();
-        
-        if(ae.getSource() == this.miae.findBtn) {
-            find(findText, false);
-        } else if(ae.getSource() == this.miae.replaceBtn) {
-            // replace(findText, replaceText);
+
+        if(ae.getSource() == this.editMenuEventObj.getFindBtn()) {
+            this.handleFind();
+        } else if(ae.getSource() == this.editMenuEventObj.getReplaceBtn()) {
+            // this.handleReplace();
         }
     }
 
-    private void find(String findText, boolean isReplace) {
-        String textAreaText = this.frame.textArea.getText().replaceAll("\\R", " ");
+    private void handleFind() {
+        String notepadText = this.frame.textArea.getText().replaceAll("\\R", " ");
 
-        String regex = "\\w*?(" + findText + ")\\w*?";
-        
+        String searchText = this.editMenuEventObj.getFindPlaceHolderTextField().getPlaceHolderTextFieldText();
+        String regex = "\\w*?(" + searchText + ")\\w*?";
+
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(textAreaText);
-        
-        if( ((this.miae.findIndex) < textAreaText.length() ) &&  matcher.find(this.miae.findIndex)) {
-            // System.out.println(matcher.group(1));
-            this.frame.textArea.requestFocus();
+        Matcher matcher = pattern.matcher(notepadText);
+
+        if ((this.editMenuEventObj.getFindIndex() < notepadText.length())
+                && matcher.find(this.editMenuEventObj.getFindIndex())) {
             this.frame.textArea.select(matcher.start(1), matcher.end(1));
-            if(!isReplace) {
-                this.miae.setFindIndex(matcher.end(1));
-            }
+            this.frame.textArea.requestFocus();
+
+            // Setting globally index of matched text
+            this.editMenuEventObj.setMatchStartIndex(matcher.start(1));
+            this.editMenuEventObj.setMatchEndIndex(matcher.end(1));
+
+            // Setting skip index for getting next occurrence
+            this.editMenuEventObj.setFindIndex(matcher.end(1));
         }
     }
-
-   
 }
