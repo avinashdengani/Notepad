@@ -34,4 +34,15 @@ public class PlaceHolderTextField extends TextField {
         addKeyListener(new PlaceHolderKeyEvent(this));
         this.miae = miae;
     }
+    public String getPlaceHolderTextFieldText() {
+        if(
+            (!this.isText) 
+                    && 
+            (this.getText().equals(this.placeHolderText))
+        ) {
+            return "";
+        } else {
+            return this.getText();
+        }
+    }
 }
